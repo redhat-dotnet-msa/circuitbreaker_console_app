@@ -14,7 +14,7 @@ namespace circuitbreaker_console_app
 {
     public class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
 	    {
 		    RunAsync().Wait();
 	    }
