@@ -61,7 +61,7 @@ namespace circuitbreaker_console_app
                     Console.WriteLine("Request " + i + ": " + msg);
                 }
                 catch (BrokenCircuitException b) {
-                    Console.WriteLine("Request " + i + " failed with: " + b.GetType().Name);
+                    Console.WriteLine("Request " + i + " failed with: " + b.GetType().Name + ". I'll say HELLO instead!");
                 }
                 catch (Exception e)
                 {
