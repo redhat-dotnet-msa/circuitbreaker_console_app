@@ -40,11 +40,15 @@ namespace circuitbreaker_console_app
 				durationOfBreak: TimeSpan.FromSeconds(8),
 				onBreak: (ex, breakDelay) =>
 				{
-					Console.WriteLine(".Breaker logging: Breaking the circuit for " + breakDelay.TotalMilliseconds + "ms!");
-					Console.WriteLine("...due to: " + ex.Message);
+//					Console.WriteLine(".Breaker logging: Breaking the circuit for " + breakDelay.TotalMilliseconds + "ms!");
+//					Console.WriteLine("...due to: " + ex.Message);
+					Console.WriteLine("Hello!");
 				},
-				onReset: () => Console.WriteLine(".Breaker logging: Call ok! Closed the circuit again."),
-				onHalfOpen: () => Console.WriteLine(".Breaker logging: Half-open; next call is a trial.")
+//				onReset: () => Console.WriteLine(".Breaker logging: Call ok! Closed the circuit again."),
+//				onHalfOpen: () => Console.WriteLine(".Breaker logging: Half-open; next call is a trial.")
+
+				onReset: () => Console.WriteLine("Hello!"),
+				onHalfOpen: () => Console.WriteLine("Hello!")
 				);
             int i = 0;
             // Do the following until a key is pressed
@@ -61,14 +65,14 @@ namespace circuitbreaker_console_app
                     Console.WriteLine("Request " + i + ": " + msg);
                 }
                 catch (BrokenCircuitException b) {
-                    Console.WriteLine("Request " + i + " failed with: " + b.GetType().Name + ". I'll say HELLO instead!");
+                    Console.WriteLine("Request " + i + ": Hello!");
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Request " + i + " eventually failed with: " + e.Message);
+                    Console.WriteLine("Request " + i + ": Hello!");
                 }
 
-                // Wait half second
+                // Wait one second
                 await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
             };
             }
